@@ -171,7 +171,7 @@ def main():
 
     sup_valid_data = lib.Dataset(dataset["sup_valid"], opt.eval_batch_size, opt.cuda, eval=True)
     bandit_valid_data  = lib.Dataset(dataset["bandit_valid"], opt.eval_batch_size, opt.cuda, eval=True)
-    bandit_test_data = lib.Dataset(dataset["bandit_test"], opt.eval_batch_size, opt.cuda, eval=True)
+    test_data = lib.Dataset(dataset["test"], opt.eval_batch_size, opt.cuda, eval=True)
 
     dicts = dataset["dicts"]
     log(" * vocabulary size. source = %d; target = %d" %
@@ -182,8 +182,8 @@ def main():
           len(dataset["train_pg"]["src"]))
     log(" * number of bandit valid sentences. %d" %
           len(dataset["bandit_valid"]["src"]))
-    log(" * number of  bandit test sentences. %d" %
-          len(dataset["bandit_test"]["src"]))
+    log(" * number of  test sentences. %d" %
+          len(dataset["test"]["src"]))
     log(" * maximum batch size. %d" % opt.batch_size)
     log("Building model...")
 
@@ -225,10 +225,10 @@ def main():
         evaluator = lib.Evaluator(model, metrics, dicts, opt, trpro_logger)
 
         # On Bandit test data
-        pred_file = opt.load_from.replace(".pt", ".bandit_test.pred")
-        tgt_file = opt.load_from.replace(".pt", ".bandit_test.tgt")
-        evaluator.eval(bandit_test_data, pred_file)
-        evaluator.eval(bandit_test_data, pred_file=None, tgt_file=tgt_file)
+        pred_file = opt.load_from.replace(".pt", ".test.pred")
+        tgt_file = opt.load_from.replace(".pt", ".test.tgt")
+        evaluator.eval(test_data, pred_file)
+        evaluator.eval(test_data, pred_file=None, tgt_file=tgt_file)
 
     else:
         xent_trainer = lib.Trainer(model, supervised_data, sup_valid_data, 
@@ -241,7 +241,7 @@ def main():
             # Actor-Critic
             critic, critic_optim = create_critic(checkpoint, dicts, opt)
             reinforce_trainer = lib.ReinforceTrainer(model, critic, bandit_data, bandit_valid_data,
-                    bandit_test_data, metrics, dicts, optim, critic_optim, 
+                    test_data, metrics, dicts, optim, critic_optim, 
                     opt, trainprocess_logger=trpro_logger, stat_logger=stat_logger,
                     samples_logger=samples_logger)
             reinforce_trainer.train(opt.start_reinforce, opt.end_epoch, start_time)

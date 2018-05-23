@@ -16,6 +16,6 @@ python ../preprocess.py \
   -sup_valid_tgt $DATA/sup_valid.$lang.$tgt \
   -bandit_valid_src $DATA/bandit_valid.$lang.$src \
   -bandit_valid_tgt $DATA/bandit_valid.$lang.$tgt \
-  -bandit_test_src $DATA/bandit_test.$lang.$src \
-  -bandit_test_tgt $DATA/bandit_test.$lang.$tgt \
+  -test_src $DATA/test.$lang.$src \
+  -test_tgt $DATA/test.$lang.$tgt \
   -save_data $DATA/processed_all

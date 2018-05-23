@@ -30,9 +30,9 @@ parser.add_argument("-bandit_valid_src", required=True,
 parser.add_argument("-bandit_valid_tgt", required=True,
                      help="Path to the test target data")
 
-parser.add_argument("-bandit_test_src", required=True,
+parser.add_argument("-test_src", required=True,
                     help="Path to the bandit external test source data")
-parser.add_argument("-bandit_test_tgt", required=True,
+parser.add_argument("-test_tgt", required=True,
                     help="Path to the bandit external test target data")
 
 parser.add_argument("-save_data", required=True,
@@ -161,8 +161,8 @@ def main():
         dicts, no_filter=True)
     save_data["bandit_valid"] = makeDataGeneral("bandit_valid", opt.bandit_valid_src, opt.bandit_valid_tgt,
         dicts, no_filter=True)
-    save_data["bandit_test"] = makeDataGeneral("bandit_test", 
-        opt.bandit_test_src, opt.bandit_test_tgt, dicts, no_filter=True)
+    save_data["test"] = makeDataGeneral("test", 
+        opt.test_src, opt.test_tgt, dicts, no_filter=True)
 
     print("Saving data to \"" + opt.save_data + "-train.pt\"...")
     torch.save(save_data, opt.save_data + "-train.pt")
