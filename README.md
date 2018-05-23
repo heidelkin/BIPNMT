@@ -20,4 +20,4 @@ Requirements:
 3. To evaluate the trained models
 * use the -eval flag (please refer to the run_eval.sh)
 
-## Notes: Because of batch size of 1, it takes about 25 mins for training 1000 sentences under
+## Notes: For BIP-NMT, it takes about 25 mins for training 1000 sentences under a Nvidia Tesla P40 - 24GB RAM GPU.
