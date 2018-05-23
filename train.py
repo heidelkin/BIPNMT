@@ -82,9 +82,6 @@ parser.add_argument("-eval", action="store_true", help="Evaluate model only")
 parser.add_argument("-max_predict_length", type=int, default=50,
                     help="Maximum length of predictions.")
 
-# Reward Signal
-parser.add_argument("-use_charF", action="store_true", help="use charF as reward Signal")
-
 
 # Others
 parser.add_argument("-eps", type=float, default=0.75, help="tolerance in entropy constraint")
