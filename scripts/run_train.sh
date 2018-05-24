@@ -37,7 +37,7 @@ python ../train.py \
 # bip-nmt
 python ../train.py \
     -data $DATA_PATH \
-    -save_dir $MODEL_HOME/save_dir/bipnmt \ 
+    -save_dir $MODEL_HOME/save_dir/bipnmt \
     -load_from $MODEL_HOME/save_dir/pretrain/model_${pretrain_epoch}.pt \
     -reinforce_lr 0.00001 \
     -use_bipnmt \
