@@ -10,9 +10,9 @@ Requirements:
 * PyTorch 0.3
 ------
 1. Download and create the vocabulary
-  * Go to the ``scripts'' folder and:
-    * source download_data.sh
-    * source make_data.sh fr en
+  * Go to the ``scripts'' folder and run the script:
+    * ./download_data.sh
+    * ./make_data.sh fr en
 2. To train the model; you can follow a sample script in ``scripts'' folder
   * run_train.sh 
 3. To evaluate the trained models
