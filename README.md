@@ -1,6 +1,7 @@
 # BIPNMT
 
 Code for our paper "A Reinforcement Learning Approach to Interactive-Predictive Neural Machine Translation"
+link: https://arxiv.org/abs/1805.01553
 
 The code is written based on Nguyen et.al, 2017's code:
 https://github.com/khanhptnk/bandit-nmt/
